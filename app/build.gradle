@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.softwork.diceroller"
+        applicationId "com.softwork.unit1"
         minSdk 24
         targetSdk 32
         versionCode 1
@@ -41,13 +41,6 @@ android {
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
-    }
-    sourceSets {
-        main {
-            res {
-                srcDirs 'src/main/res', 'src/main/res/raw'
-            }
         }
     }
 }

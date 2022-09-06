@@ -6,10 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -25,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.tooling.preview.Preview
 import com.softwork.diceroller.ui.theme.DiceRollerTheme
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +44,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DiceRoller() {
     ButtonAndImage(modifier = Modifier
-        .background(Color.Black)
-        .fillMaxSize()
         .wrapContentSize(Alignment.Center)) {
 
     }
@@ -71,12 +67,23 @@ fun ButtonAndImage(modifier: Modifier = Modifier, function: () -> Unit) {
         else -> R.drawable.dice_6
     }
 
-    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+    val color = remember { mutableStateOf(Color.Black) }
+
+    Column(modifier = modifier.background(color.value).fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
         Image(
             painter = painterResource(id = image),
             contentDescription = result.toString()
         )
-        Button(onClick = { result = (1..6).random(); mMediaPlayer.start()}, modifier = Modifier.background(Color.Green)) {
+        Button(onClick = { result = (1..6).random(); mMediaPlayer.start();
+            color.value = Color(
+                Random.nextFloat(),
+                Random.nextFloat(),
+                Random.nextFloat(),
+                alpha = 1f
+            )},
+            modifier = Modifier.background(Color.Black)) {
             Text(text = stringResource(R.string.roll))
         }
 

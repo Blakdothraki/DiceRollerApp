@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Dice Roller</string>
     <string name="roll">ROLL DICE</string>
+    <string name="tree">Tap the tree to select a lemon</string>
+    <string name="squeeze">Keep tapping the lemon to squeeze</string>
+    <string name="drink">Tap the lemonade to drink it</string>
+    <string name="remake">Tap the empty glass to start again</string>
+    <string name="tree_image">Tree image</string>
+    <string name="lemon">Lemon image</string>
+    <string name="lemonade">Lemonade juice</string>
+    <string name="empty_glass">Empty glass</string>
 </resources>
